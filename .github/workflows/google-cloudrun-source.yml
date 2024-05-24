@@ -13,7 +13,7 @@ jobs:
   deployment:
     strategy:
       matrix:
-        environment: [staging,production,development]
+        environment: [staging,production]
     environment: ${{ matrix.environment }}
     env:
       SERVICE: cloud-run-github-actions-${{ matrix.environment }}
