@@ -21,7 +21,7 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
-    if: ${{ matrix.environment != 'production' }}  && github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    if: ${{ matrix.environment == 'production' }}  && github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
