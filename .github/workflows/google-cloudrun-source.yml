@@ -37,7 +37,7 @@ jobs:
           # NOTE: If required, update to the appropriate source folder
           source: ./
           env_vars: |-
-                    MODE=production
+                    MODE=${{secrets.MODE}}
                     SENTENCE=" this will retain leading and trailing spaces "
 
       # If required, use the Cloud Run url output in later steps
