@@ -14,6 +14,9 @@ jobs:
     strategy:
       matrix:
         environment: [staging,production]
+        exclude:
+          - shouldRelease: false
+            environment: production
     environment: ${{ matrix.environment }}
     env:
       SERVICE: cloud-run-github-actions-${{ matrix.environment }}
