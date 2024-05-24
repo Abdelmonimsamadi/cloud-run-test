@@ -21,7 +21,7 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,7 +43,7 @@ jobs:
           # NOTE: If required, update to the appropriate source folder
           source: ./
           env_vars: |-
-                    MODE=${{secrets.MODE}}
+                    MODE = ${{ secrets.MODE }}
 
       # If required, use the Cloud Run url output in later steps
       - name: Show Output
