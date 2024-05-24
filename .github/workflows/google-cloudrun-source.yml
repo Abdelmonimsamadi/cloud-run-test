@@ -14,11 +14,6 @@ jobs:
     strategy:
       matrix:
         environment: [staging,production]
-        shouldRelease:
-          - ${{ contains(github.ref, 'main')
-        exclude:
-          - shouldRelease: false
-            environment: production
     environment: ${{ matrix.environment }}
     env:
       SERVICE: cloud-run-github-actions-${{ matrix.environment }}
@@ -26,7 +21,7 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
-    # if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
