@@ -17,12 +17,12 @@ jobs:
     environment: ${{ matrix.environment }}
     env:
       SERVICE: cloud-run-github-actions-${{ matrix.environment }}
-      ENVIRONMENT: ${{ matrix.environment }}
+      # ENVIRONMENT: ${{ matrix.environment }}
     # Add 'id-token' with the intended permissions for workload identity federation
     permissions:
       contents: 'read'
       id-token: 'write'
-    if: env.ENVIRONMENT != 'production' && github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    if: ${{ matrix.environment }} != 'production' && github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
